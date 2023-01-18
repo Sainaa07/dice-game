@@ -26,13 +26,36 @@ document.querySelector(".btn-roll").addEventListener("click",function(){
         roundScore = roundScore + diceNumber;
         document.getElementById("current-" + activePlayer).textContent = roundScore;
     } else {
-        roundScore = 0;
-        document.getElementById("current-" + activePlayer).textContent = 0;
-        activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
-        document.querySelector(".player-0-panel").classList.toggle("active");
-        document.querySelector(".player-1-panel").classList.toggle("active");
-        diceDom.style.display = "none";
+        switchToNextPlayer();
     }
 });
+// hold event
+document.querySelector(".btn-hold").addEventListener('click',function(){
+    // ug toglogchin tsugluulsan onoog global onoon deer nemne
+    scores[activePlayer] = scores[activePlayer] + roundScore;
+    document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
+    //eeljin onoo 0leh bolgono
+    if (scores[activePlayer] >= 10) {
+        document.getElementById("name-" + activePlayer).textContent = "WINNER!!!";
+        document.querySelector(".player-" + activePlayer + "-panel").classList.add("winner");
+        document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active");
+    } else {
+        switchToNextPlayer();
+    }
+    //toglogchin eelj solino
+});
+function switchToNextPlayer() {
 
-
+    roundScore = 0;
+    document.getElementById("current-" + activePlayer).textContent = 0;
+  
+  
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+  
+  
+    document.querySelector(".player-0-panel").classList.toggle("active");
+    document.querySelector(".player-1-panel").classList.toggle("active");
+  
+  
+    diceDom.style.display = "none";
+  }
