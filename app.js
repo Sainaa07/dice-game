@@ -1,6 +1,7 @@
 // toglogchin eeljig hadgalah var, 1dehig 0 , 2dohi player 1 gej temdegley.
 var activePlayer;
-
+//toglom duussan eseh hadgalag tuluvin huvisagch
+var isNewGame;
 // toglogchdin sum var
 var scores;
 // toglogchig eeljinde tsugluulj baiga onoog hadgalah huvisagch
@@ -9,6 +10,8 @@ var roundScore;
 var diceDom = document.querySelector(".dice");
 initGame();
 function initGame(){
+    //togloom ehllee ingdg tuluv
+    isNewGame = true;
     activePlayer = 0;
 // toglogchdin sum var
     scores = [0,0];
@@ -30,7 +33,8 @@ function initGame(){
     diceDom.style.display = "none";
 }
 document.querySelector(".btn-roll").addEventListener("click",function(){
-    var diceNumber = Math.floor(Math.random() * 6) + 1;
+    if (isNewGame){
+        var diceNumber = Math.floor(Math.random() * 6) + 1;
     // 1 - 6 dotor rand tooo gargaj avna
     diceDom.style.display = "block";
     diceDom.src = "dice-" + diceNumber + ".png";
@@ -41,6 +45,7 @@ document.querySelector(".btn-roll").addEventListener("click",function(){
     } else {
         switchToNextPlayer();
     }
+    }
 });
 // hold event
 document.querySelector(".btn-hold").addEventListener('click',function(){
@@ -49,6 +54,8 @@ document.querySelector(".btn-hold").addEventListener('click',function(){
     document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
     //eeljin onoo 0leh bolgono
     if (scores[activePlayer] >= 10) {
+        //duussan tuluvt oruulna
+        isNewGame = false;
         document.getElementById("name-" + activePlayer).textContent = "WINNER!!!";
         document.querySelector(".player-" + activePlayer + "-panel").classList.add("winner");
         document.querySelector(".player-" + activePlayer + "-panel").classList.remove("active");
