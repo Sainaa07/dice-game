@@ -1,5 +1,5 @@
 // toglogchin eeljig hadgalah var, 1dehig 0 , 2dohi player 1 gej temdegley.
-var activePlayer = 1;
+var activePlayer = 0;
 
 // toglogchdin sum var
 var scores = [0,0];
