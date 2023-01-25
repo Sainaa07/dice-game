@@ -1,21 +1,34 @@
 // toglogchin eeljig hadgalah var, 1dehig 0 , 2dohi player 1 gej temdegley.
-var activePlayer = 0;
+var activePlayer;
 
 // toglogchdin sum var
-var scores = [0,0];
+var scores;
 // toglogchig eeljinde tsugluulj baiga onoog hadgalah huvisagch
-var roundScore =0;
+var roundScore;
 // shooni ali talaaraa buusnig hadgalah huvisagch heregtei , 1-6 gesen utgig random uusgej ugnu.
 var diceDom = document.querySelector(".dice");
-
-//program is beginning
-document.getElementById('score-0').textContent = "0";
-document.getElementById('score-1').textContent = "0"
-document.getElementById('current-0').textContent = "0";
-document.getElementById('current-1').textContent = "0";
-//shoo shideh eventlistener
-document.querySelector(".dice").style.display = "none";
-
+initGame();
+function initGame(){
+    activePlayer = 0;
+// toglogchdin sum var
+    scores = [0,0];
+    // toglogchig eeljinde tsugluulj baiga onoog hadgalah huvisagch
+    roundScore =0;
+    //program is beginning
+    document.getElementById('score-0').textContent = "0";
+    document.getElementById('score-1').textContent = "0"
+    document.getElementById('current-0').textContent = "0";
+    document.getElementById('current-1').textContent = "0";
+    document.getElementById('name-0').textContent = "PLAYER 1";
+    document.getElementById('name-1').textContent = "PLAYER 2";
+    document.querySelector('.player-0-panel').classList.remove("winner");
+    document.querySelector('.player-1-panel').classList.remove("winner");
+    document.querySelector(".player-0-panel").classList.remove("active");
+    document.querySelector(".player-1-panel").classList.remove("active");
+    document.querySelector(".player-0-panel").classList.add("active");
+    //shoo shideh eventlistener
+    diceDom.style.display = "none";
+}
 document.querySelector(".btn-roll").addEventListener("click",function(){
     var diceNumber = Math.floor(Math.random() * 6) + 1;
     // 1 - 6 dotor rand tooo gargaj avna
@@ -59,3 +72,5 @@ function switchToNextPlayer() {
   
     diceDom.style.display = "none";
   }
+// shine togloom ehluuleh tovchni event
+document.querySelector('.btn-new').addEventListener('click', initGame);
