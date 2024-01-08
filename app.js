@@ -53,7 +53,7 @@ document.querySelector(".btn-hold").addEventListener('click',function(){
     scores[activePlayer] = scores[activePlayer] + roundScore;
     document.getElementById("score-" + activePlayer).textContent = scores[activePlayer];
     //eeljin onoo 0leh bolgono
-    if (scores[activePlayer] >= 10) {
+    if (scores[activePlayer] >= 40) {
         //duussan tuluvt oruulna
         isNewGame = false;
         document.getElementById("name-" + activePlayer).textContent = "WINNER!!!";
